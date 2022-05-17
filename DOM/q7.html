@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #pass {
+            display: block;
+            margin: auto;
+            margin-top: 10rem;
+            width: 25rem;
+            height: 3rem;
+        }
+
+        p {
+            text-align: center;
+            font-size: 3rem;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <input type="text" id="pass"></input> -->
+    <h1>Input box</h1>
+    <input type="text" id="pass"></input>
+    <!-- <input type="text" id="pass"></input> -->
+    <p>Caps on!</p>
+    
+</body>
+
+ <script>
+     // Q- write a script which keeps checking the password being entered.
+     //It should check if capslock is on or offf
+     //if it is on it should not allow to typeans show " caps on " on screen
+     //also it should only allow to type if the shift is press down;
+
+
+     let inputBox = document.querySelector("#pass");
+     let message =  document.querySelector("p");
+     let isShift = false;
+
+     inputBox.addEventListerner("keypress",function(e){
+         //boolean , wether capslock is on (true) or off (false)
+         if(e.getModifierState("Capslock")){
+             meesage.style.display="block";
+             e.preventDefault();
+         }
+         else
+         {
+             message.style.display="none";
+         }
+     })
+
+     // diff b/w keypress and keydown/up
+    //  doucument.addEventListerner("keypress",function(e){
+    //     console.log(e);
+    //  })
+    //  doucument.addEventListerner("keydown",function(e){
+    //     console.log(e);
+    //  })
+    //  doucument.addEventListerner("keyup",function(e){
+    //     console.log(e);
+    //  })
+     
+     
+     
+     
+     
+     doucument.addEventListerner("keydown",function(e){
+         if(e.key == "Shift"){
+             isShift =true;
+         }
+     })
+
+     doucument.addEventListerner("keyup",function(e){
+         if(e.key == "Shift"){
+             isShift = false;
+         }
+     })
+ </script>
+
+</html>
